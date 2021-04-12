@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<title>Inicio - Loguin</title>
 </head>
 <body>
 	<form action="ControllerAcceso" method="post">
@@ -19,7 +19,5 @@
 		<br>
 		<input type="submit">
 	</form>
-<%String saludo= "HOLA MUNDO DESDE JAVA"; %>
-<h1 value= <%=saludo %>>h</h1>
 </body>
 </html>
