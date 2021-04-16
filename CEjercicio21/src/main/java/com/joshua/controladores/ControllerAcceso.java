@@ -1,6 +1,7 @@
 package com.joshua.controladores;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.joshua.DAO.ClsUsuario;
-import com.joshua.entidades.Login;
+import com.joshua.entidades.*;
 import com.joshua.negocio.clsLogin;
 
 /**
@@ -43,35 +44,31 @@ public class ControllerAcceso extends HttpServlet {
 		
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
-		
-		Login log = new Login();
+		//
 		clsLogin clsL = new clsLogin();
+		usuario log = new usuario();
 		
-		log.setUser(user);
+		log.setUsuario(user);
 		log.setPass(pass);
+		
+		
 		
 		int valordeaceso=clsL.acceso(log);
 		
 		if(valordeaceso==1) {
 			
-		System.out.println("WELCOME");
-		
-		ClsUsuario clsUsuario = new ClsUsuario();
-		
-		var usuario = clsUsuario.ListadoUSUARIOS();
-		
-		for(var iteracion: usuario)
-		{
-			System.out.print(iteracion.getUsuario());
-		}
-		
-		
-		
-		response.sendRedirect("SALUDO.jsp");
-		}else {
-			System.out.println("ERROR");
-			response.sendRedirect("Error.jsp");
-		}
+			if (valordeaceso == 1) {
+				//Este es un usuario Administrador
+				System.out.println("> Usted ha iniciado como Administrador.");
+				response.sendRedirect("Administrador.jsp");
+			} else if (valordeaceso == 2) {
+				//Este es un usuario normal
+				System.out.println("> Usted ha iniciado como Usuario.");
+				response.sendRedirect("Usuario.jsp");
+			} else {
+				System.out.println("> Error.");
+				response.sendRedirect("Error.jsp");
+			}
 	}
-
+}
 }

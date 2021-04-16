@@ -23,5 +23,12 @@ public class usuario extends tipoUsuario {
 	protected int idUsuario;
     protected String Usuario;
     protected String Pass;
+    protected int TipoUsuario;
+	public int getTipoUsuario() {
+		return TipoUsuario;
+	}
+	public void setTipoUsuario(int tipoUsuario) {
+		TipoUsuario = tipoUsuario;
+	}
 
 }

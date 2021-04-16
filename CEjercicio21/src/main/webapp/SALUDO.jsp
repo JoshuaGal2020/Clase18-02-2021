@@ -35,7 +35,7 @@
 				<td>${item.Usuario}</td>
 				<td>${item.Pass}</td>
 				<td> <a href="ControllerMostrarInformacion?usu=${item.idUsuario}" class="btn btn-danger">ELIMINAR<a></td>
-				<a href="add.jsp?Id=${item.idUsuario}&Usuario=${item.Usuario}&Pass=${item.Pass}" class="btn btn-warning">Actualizar</a>
+				<td><a href="add.jsp?Id=${item.idUsuario}&Usuario=${item.Usuario}&Pass=${item.Pass}" class="btn btn-warning">Actualizar</a></td>
 				</tr>				
 				`
 				console.log(item.Pass);
