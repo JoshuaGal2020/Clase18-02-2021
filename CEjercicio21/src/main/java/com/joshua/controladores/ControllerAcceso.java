@@ -40,27 +40,27 @@ public class ControllerAcceso extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		//doGet(request, response);
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
 		//
-		clsLogin clsL = new clsLogin();
 		usuario log = new usuario();
+		clsLogin clsL = new clsLogin();
 		
 		log.setUsuario(user);
 		log.setPass(pass);
 		
 		
 		
-		int valordeaceso=clsL.acceso(log);
+		int valoracceso=clsL.acceso(log);
 		
-		if(valordeaceso==1) {
+		if(valoracceso==1) {
 			
-			if (valordeaceso == 1) {
+			if (valoracceso == 1) {
 				//Este es un usuario Administrador
 				System.out.println("> Usted ha iniciado como Administrador.");
-				response.sendRedirect("Administrador.jsp");
-			} else if (valordeaceso == 2) {
+				response.sendRedirect("SALUDO.jsp");
+			} else if (valoracceso == 2) {
 				//Este es un usuario normal
 				System.out.println("> Usted ha iniciado como Usuario.");
 				response.sendRedirect("Usuario.jsp");

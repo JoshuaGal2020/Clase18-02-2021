@@ -47,7 +47,7 @@ public class ControllerMostrarInformacion extends HttpServlet {
 			if (Evaluar.equals("btne")) {
 				usu.setIdUsuario(Integer.parseInt(IdUsuario));
 				clsusuario.Eliminar(usu);
-				response.sendRedirect("saludo.jsp");
+				response.sendRedirect("SALUDO.jsp");
 				
 			}
 		}
@@ -59,12 +59,12 @@ public class ControllerMostrarInformacion extends HttpServlet {
 			
 			if(IdUsuario == "" || IdUsuario == null) {			
 				clsusuario.Agregar(usu);
-				response.sendRedirect("saludo.jsp");
+				response.sendRedirect("SALUDO.jsp");
 			}
 			else {
 				usu.setIdUsuario(Integer.parseInt(IdUsuario));
 				clsusuario.Actualizar(usu);
-				response.sendRedirect("saludo.jsp");
+				response.sendRedirect("SALUDO.jsp");
 			}
 		}
 	}
