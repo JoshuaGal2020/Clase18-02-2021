@@ -15,7 +15,7 @@
         <div id="menu">
             <ul>
                 <li><a href="index.jsp"><strong>Regresar</strong></a></li>
-                <li><a href="Saludo.jsp"><strong>Mostrar usuarios</strong></a></li>
+                <li><a href="SALUDO.jsp"><strong>Mostrar usuarios</strong></a></li>
             </ul>
         </div>
         <h1>Bienvenido, Administrador.</h1>
