@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.joshua.DAO.ClsUsuario;
+import com.joshua.DAO.*;
 import com.joshua.entidades.*;
 import com.joshua.negocio.clsLogin;
 
@@ -43,31 +43,26 @@ public class ControllerAcceso extends HttpServlet {
 		//doGet(request, response);
 		String user = request.getParameter("user");
 		String pass = request.getParameter("pass");
-		//
+		
 		usuario log = new usuario();
 		clsLogin clsL = new clsLogin();
-		
+
 		log.setUsuario(user);
 		log.setPass(pass);
-		
-		
-		
-		int valoracceso=clsL.acceso(log);
-		
-		if(valoracceso==1) {
-			
-			if (valoracceso == 1) {
-				//Este es un usuario Administrador
-				System.out.println("> Usted ha iniciado como Administrador.");
-				response.sendRedirect("SALUDO.jsp");
-			} else if (valoracceso == 2) {
-				//Este es un usuario normal
-				System.out.println("> Usted ha iniciado como Usuario.");
-				response.sendRedirect("Usuario.jsp");
-			} else {
-				System.out.println("> Error.");
-				response.sendRedirect("Error.jsp");
-			}
-	}
+
+		int valoracceso = clsL.acceso(log);
+
+		if (valoracceso == 1) {
+			//Este es un usuario Administrador
+			System.out.println("> Usted ha iniciado como Administrador.");
+			response.sendRedirect("Administrador.jsp");
+		} else if (valoracceso == 2) {
+			//Este es un usuario normal
+			System.out.println("> Usted ha iniciado como Usuario.");
+			response.sendRedirect("Usuario.jsp");
+		} else {
+			System.out.println("> Error.");
+			response.sendRedirect("Error.jsp");
+		}
 }
 }
