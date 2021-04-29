@@ -1,3 +1,4 @@
+<%@page import="java.net.http.HttpClient.Redirect"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -5,7 +6,7 @@
 <html>
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 <meta charset="ISO-8859-1">
-<title>Pagina de Bienvenida</title>
+<title>Pagina Administrativa</title>
 <link rel="stylesheet" href="Style/style_saludo.css">
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css"
@@ -38,6 +39,7 @@
 						<td>${item.idUsuario}</td>
 						<td>${item.Usuario}</td>
 						<td>${item.Pass}</td>
+						<td>${item.TipoUser}</td>
 						<td><a href="ControllerMostrarInformacion?IdUsuario=${item.idUsuario}&Eliminar=btne" class="btn btn-danger">Eliminar</a>
 						<a href="add.jsp?Id=${item.idUsuario}&Usuario=${item.Usuario}&Pass=${item.Pass}" class="btn btn-warning">Actualizar</a>
 						</td>
@@ -48,7 +50,22 @@
 				});
 			});
 		</script>
+		<%
+		HttpSession sesion = (HttpSession) request.getSession();
+		String usuSession = String.valueOf(sesion.getAttribute("usuario"));
+		
+		System.out.print(usuSession+ "Nombre Usuario");
+		
+		if(usuSession.equals(null)|| usuSession.equals("null")){
+			
+			response.sendRedirect("index.jsp");
+		}
+		
+		%>
 	<h1 align="center">Bienvenido</h1>
+	<form action="ControllerAcceso" method="post" >
+	<input type="Submit" name="btncerrar" value="cerrar">
+	</form>
 	<h2 align="center">(Datos que estan en la tabla de Usuario)</h2>
 	<div align="center">
 		<a href="add.jsp" class="btn btn-lg btn-success">Agregar nuevo</a>
@@ -59,6 +76,7 @@
 			<th>ID_USUARIO</th>
 			<th>USUARIO</th>
 			<th>PASSWORD</th>
+			<th>TIPO_USUARIO</th>
 			<th>ACCIONES</th>
 		</thead>
 	</table>
